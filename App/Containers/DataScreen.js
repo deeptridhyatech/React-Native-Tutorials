@@ -49,7 +49,7 @@ export default class DataScreen extends Component {
                         </Body>
 
                         <Right>
-                            <Icon onPress={()=> this.props.navigation.navigate('DataDetailScreen')} name="arrow-forward" />
+                            <Icon onPress={()=> this.props.navigation.navigate('DataDetailScreen',{'userDetail': item})} name="arrow-forward" />
                         </Right>
 
                     </ListItem>

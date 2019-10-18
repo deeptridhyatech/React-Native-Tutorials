@@ -3,7 +3,6 @@ import { View, FlatList, ScrollView } from 'react-native'
 // Styles
 import styles from './Styles/DataDetailScreenStyles'
 import { Container, Header, Body, Left, Icon, Text, List, ListItem, Right, Content } from 'native-base'
-import axios from 'axios';
 
 export default class DataDetailScreen extends Component {
 
@@ -19,7 +18,7 @@ export default class DataDetailScreen extends Component {
     }
 
     componentWillMount() {
-        this.getUserData();
+        // this.getUserData();
     }
 
     renderItems = ({ item }) => {
