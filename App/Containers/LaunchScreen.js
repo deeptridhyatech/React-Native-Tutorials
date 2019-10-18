@@ -1,28 +1,86 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
-import { Images } from '../Themes'
-
+import { Text, View, ActionSheetIOS, ScrollView } from 'react-native'
+import { Button, ActionSheet } from 'native-base'
+import LoginScreen from './LoginScreen'
+import { AsyncStorage } from 'react-native';
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 
+
 export default class LaunchScreen extends Component {
-  render () {
+
+
+  pickedMethod(params) {
+    if (params === 1) {
+      alert("Upload Image")
+    } else if (params === 2) {
+      alert("Getting Location")
+    } else if (params === 5) {
+      alert("JSON Listing")
+    } else if (params === 6) {
+      this.retriveToken();
+    } else if (params === 7) {
+     
+    } else if (params === 8) {
+      alert("Facebook Login")
+    }
+  }
+
+  retriveToken = async () => {
+    try {
+      const value = await AsyncStorage.getItem('token');
+      if (value !== null) {
+        // We have data!!
+        alert(value);
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+
+  render() {
+
+    const { navigate } = this.props.navigation;
+
     return (
       <View style={styles.mainContainer}>
-        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
-        <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-            <Image source={Images.launch} style={styles.logo} />
-          </View>
 
-          <View style={styles.section} >
-            <Image source={Images.ready} />
-            <Text style={styles.sectionText}>
-              This probably isn't what your app is going to look like. Unless your designer handed you this screen and, in that case, congrats! You're ready to ship. For everyone else, this is where you'll see a live preview of your fully functioning app using Ignite.
-            </Text>
-          </View>
 
-        </ScrollView>
+        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(1)}>
+          <Text style={{ color: 'white' }}>Upload Image</Text>
+        </Button>
+
+        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(2)}>
+          <Text style={{ color: 'white' }}>Get Location</Text>
+        </Button>
+
+        <Button style={styles.buttonStyles} full onPress={() => navigate('RegisterScreen')}>
+          <Text style={{ color: 'white' }}>Register Profile</Text>
+        </Button>
+
+        <Button style={styles.buttonStyles} full onPress={() => navigate('LoginScreen')}>
+          <Text style={{ color: 'white' }}>Login API</Text>
+        </Button>
+
+        <Button style={styles.buttonStyles} full onPress={() => navigate('DataScreen')}>
+          <Text style={{ color: 'white' }}>JSON Listing</Text>
+        </Button>
+
+        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(6)}>
+          <Text style={{ color: 'white' }}>Storage</Text>
+        </Button>
+
+        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(7)}>
+          <Text style={{ color: 'white' }}>Google Login</Text>
+        </Button>
+
+        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(8)}>
+          <Text style={{ color: 'white' }}>Facebook Login</Text>
+        </Button>
+
+
+
+
       </View>
     )
   }
