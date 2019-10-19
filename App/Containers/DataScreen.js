@@ -42,14 +42,14 @@ export default class DataScreen extends Component {
     renderItems = ({ item }) => {
         return (
                 <List>
-                    <ListItem itemHeader first>
+                    <ListItem itemHeader first onPress={()=> this.props.navigation.navigate('DataDetailScreen',{'userDetail': item})}>
                         <Body>
                             <Text>{item.name}</Text>
                             <Text note numberOfLines={1}>{item.email}</Text>
                         </Body>
 
                         <Right>
-                            <Icon onPress={()=> this.props.navigation.navigate('DataDetailScreen',{'userDetail': item})} name="arrow-forward" />
+                            <Icon  name="arrow-forward" />
                         </Right>
 
                     </ListItem>

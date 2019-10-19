@@ -24,10 +24,10 @@ export default class RegisterScreen extends Component {
                 <Container>
                     <Header>
                         <Left>
-                        <Icon type="MaterialIcons" name="arrow-back">
+                        <Icon style={{color:'white'}} type="MaterialIcons" name="arrow-back">
                             </Icon>
                         </Left>
-                        <Body><Text>Register Profile</Text></Body>
+                        <Body><Text style={{color:'white'}}>Register Profile</Text></Body>
                     </Header>
                 </Container>
 

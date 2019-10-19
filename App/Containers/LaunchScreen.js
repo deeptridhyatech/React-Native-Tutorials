@@ -3,6 +3,7 @@ import { Text, View, ActionSheetIOS, ScrollView } from 'react-native'
 import { Button, ActionSheet } from 'native-base'
 import LoginScreen from './LoginScreen'
 import { AsyncStorage } from 'react-native';
+import { Container, Header, Body, Left, Icon,Right } from 'native-base'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 
@@ -20,7 +21,7 @@ export default class LaunchScreen extends Component {
     } else if (params === 6) {
       this.retriveToken();
     } else if (params === 7) {
-     
+
     } else if (params === 8) {
       alert("Facebook Login")
     }
@@ -45,42 +46,56 @@ export default class LaunchScreen extends Component {
     return (
       <View style={styles.mainContainer}>
 
+        <Container>
+          <Header >
+            <Left>
+              <Icon style={{ color: 'white' }} type="MaterialIcons" name="menu">
+              </Icon>
+            </Left>
+            <Body><Text style={{ color: 'white' }}>Dashboard</Text></Body>
 
-        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(1)}>
-          <Text style={{ color: 'white' }}>Upload Image</Text>
-        </Button>
+            <Right>
+              <Icon style={{ color: 'white' }} type="MaterialIcons" name="account-balance-wallet">
+              </Icon>
+            </Right>
 
-        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(2)}>
-          <Text style={{ color: 'white' }}>Get Location</Text>
-        </Button>
+          </Header>
 
-        <Button style={styles.buttonStyles} full onPress={() => navigate('RegisterScreen')}>
-          <Text style={{ color: 'white' }}>Register Profile</Text>
-        </Button>
+          <ScrollView>
 
-        <Button style={styles.buttonStyles} full onPress={() => navigate('LoginScreen')}>
-          <Text style={{ color: 'white' }}>Login API</Text>
-        </Button>
+            <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(1)}>
+              <Text style={{ color: 'white' }}>Upload Image</Text>
+            </Button>
 
-        <Button style={styles.buttonStyles} full onPress={() => navigate('DataScreen')}>
-          <Text style={{ color: 'white' }}>JSON Listing</Text>
-        </Button>
+            <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(2)}>
+              <Text style={{ color: 'white' }}>Get Location</Text>
+            </Button>
 
-        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(6)}>
-          <Text style={{ color: 'white' }}>Storage</Text>
-        </Button>
+            <Button style={styles.buttonStyles} full onPress={() => navigate('RegisterScreen')}>
+              <Text style={{ color: 'white' }}>Register Profile</Text>
+            </Button>
 
-        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(7)}>
-          <Text style={{ color: 'white' }}>Google Login</Text>
-        </Button>
+            <Button style={styles.buttonStyles} full onPress={() => navigate('LoginScreen')}>
+              <Text style={{ color: 'white' }}>Login API</Text>
+            </Button>
 
-        <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(8)}>
-          <Text style={{ color: 'white' }}>Facebook Login</Text>
-        </Button>
+            <Button style={styles.buttonStyles} full onPress={() => navigate('DataScreen')}>
+              <Text style={{ color: 'white' }}>JSON Listing</Text>
+            </Button>
 
+            <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(6)}>
+              <Text style={{ color: 'white' }}>Storage</Text>
+            </Button>
 
+            <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(7)}>
+              <Text style={{ color: 'white' }}>Google Login</Text>
+            </Button>
 
-
+            <Button style={styles.buttonStyles} full onPress={() => this.pickedMethod(8)}>
+              <Text style={{ color: 'white' }}>Facebook Login</Text>
+            </Button>
+          </ScrollView>
+        </Container>
       </View>
     )
   }
