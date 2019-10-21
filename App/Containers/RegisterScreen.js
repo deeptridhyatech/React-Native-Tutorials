@@ -3,6 +3,8 @@ import { View } from 'react-native'
 // Styles
 import styles from './Styles/RegisterStyles'
 import { Container, Header, Body, Left, Icon,Text } from 'native-base'
+import {FormBuilder,FieldGroup,FieldControl,Validators} from "react-reactive-form";
+
 export default class RegisterScreen extends Component {
 
     constructor(props) {
@@ -29,6 +31,8 @@ export default class RegisterScreen extends Component {
                         </Left>
                         <Body><Text style={{color:'white'}}>Register Profile</Text></Body>
                     </Header>
+
+                    
                 </Container>
 
 
