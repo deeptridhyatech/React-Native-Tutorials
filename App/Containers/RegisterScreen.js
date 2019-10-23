@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 // Styles
 import styles from './Styles/RegisterStyles'
-import { Container, Header, Body, Left, Icon,Text } from 'native-base'
-import {FormBuilder,FieldGroup,FieldControl,Validators} from "react-reactive-form";
+import { Container, Header, Body, Left, Icon, Text, Right, Button } from 'native-base'
+import { FormBuilder, FieldGroup, FieldControl, Validators } from "react-reactive-form";
+import { Colors } from '../Themes';
 
 export default class RegisterScreen extends Component {
 
@@ -21,22 +22,32 @@ export default class RegisterScreen extends Component {
     render() {
         return (
             <View style={styles.mainContainer}>
+                <View>
+                    <View style={styles.headerStyles}>
+                        <View >
+                            <Text style={styles.headerText}>Contract with</Text>
+                        </View>
 
-
-                <Container>
-                    <Header>
-                        <Left>
-                        <Icon style={{color:'white'}} type="MaterialIcons" name="arrow-back">
-                            </Icon>
-                        </Left>
-                        <Body><Text style={{color:'white'}}>Register Profile</Text></Body>
-                    </Header>
-
-                    
-                </Container>
+                        <View >
+                            <Text style={styles.headerText}>Contract with</Text>
+                        </View>
+                    </View>
+                </View>
 
 
 
+               <View style={styles.mainBody}>
+                    <View>
+
+                    </View>
+               </View>
+
+
+                <View style={styles.footerStyles}>
+                    <Button rounded success style={styles.footerButton}>
+                        <Text style={styles.footerButtonText}>Done & Invite</Text>
+                    </Button>
+                </View>
             </View>
         )
     }
