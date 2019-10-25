@@ -1,3 +1,4 @@
+import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import LaunchScreen from '../Containers/LaunchScreen'
@@ -6,7 +7,8 @@ import styles from './Styles/NavigationStyles'
 import RegisterScreen from '../Containers/RegisterScreen'
 import DataScreen from '../Containers/DataScreen'
 import DataDetailScreen from '../Containers/DataDetailScreen'
-import Icon from 'react-native-vector-icons/Ionicons'
+import { Icon } from 'native-base'
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 
 // Manifest of possible screens
@@ -28,17 +30,42 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 export default createMaterialBottomTabNavigator({
   LaunchScreen: {
-    screen: LaunchScreen,
+    screen: LaunchScreen, navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ tintColor }) => (
+        <View>
+          <Icon style={[{ color: tintColor }]} size={25} source="FontAwesome" name="search" />
+        </View>),
+
+    }
   },
-  RegisterScreen: { screen: RegisterScreen,navigationOptions:{
-    tabBarLabel: 'Home',
-    
-     }  },
-  LoginScreen: { screen: LoginScreen },
+  RegisterScreen: {
+    screen: RegisterScreen, navigationOptions: {
+      tabBarLabel: 'Home',
+      tabBarIcon: ({ tintColor }) => (
+        <View>
+          <Icon style={[{ color: tintColor }]} size={25} source="AntDesign" name="home" />
+        </View>),
+
+    }
+  },
+  LoginScreen: {
+    screen: LoginScreen, navigationOptions: {
+      tabBarLabel: 'Login',
+      tabBarIcon: ({ tintColor }) => (
+        <View>
+          <Icon style={[{ color: tintColor }]} size={25} source="MaterialIcons" name="lock" />
+        </View>),
+
+    }
+  },
 
 }, {
-  activeTintColor: 'orange',
   initialRouteName: 'RegisterScreen',
-  
+  activeColor: 'red',
+  inactiveColor: 'black',
+  barStyle: { backgroundColor: 'white' },
+
+
 })
 // export default createAppContainer(BottomNav)
