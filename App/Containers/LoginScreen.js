@@ -48,9 +48,9 @@ export default class LoginScreen extends Component {
             <Body><Text style={{ color: 'white' }}>Login</Text></Body>
           </Header>
 
-          <ScrollView>
+          
 
-            <Form>
+            {/* <Form>
               <Item stackedLabel>
                 <Label>Username</Label>
                 <Input onChangeText={email => this.setState({ email })} />
@@ -63,10 +63,10 @@ export default class LoginScreen extends Component {
               <Button style={{ margin: 10 }} full onPress={() => this.doLogin()}>
                 <Text style={{ color: 'white', }}>Login</Text>
               </Button>
-            </Form>
+            </Form> */}
 
 
-          </ScrollView>
+         
 
         </Container>
       </View>

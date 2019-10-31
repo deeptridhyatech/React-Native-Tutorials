@@ -1,21 +1,58 @@
 import React, { Component } from 'react'
-import { Text, View, ActionSheetIOS, ScrollView } from 'react-native'
+import { Text, View, ActionSheetIOS, ScrollView, TouchableOpacity, ToastAndroid } from 'react-native'
 import { Button, ActionSheet } from 'native-base'
 import LoginScreen from './LoginScreen'
 import { AsyncStorage } from 'react-native';
-import { Container, Header, Body, Left, Icon,Right } from 'native-base'
+import { Container, Header, Body, Left, Icon, Right } from 'native-base'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
+import { RNCamera } from 'react-native-camera';
+import GetLocation from 'react-native-get-location'
+
 
 
 export default class LaunchScreen extends Component {
 
 
   pickedMethod(params) {
+
     if (params === 1) {
-      alert("Upload Image")
+      <RNCamera
+        ref={ref => {
+          this.camera = ref;
+        }}
+        style={styles.preview}
+        type={RNCamera.Constants.Type.back}
+        flashMode={RNCamera.Constants.FlashMode.on}
+        androidCameraPermissionOptions={{
+          title: 'Permission to use camera',
+          message: 'We need your permission to use your camera',
+          buttonPositive: 'Ok',
+          buttonNegative: 'Cancel',
+        }}
+        androidRecordAudioPermissionOptions={{
+          title: 'Permission to use audio recording',
+          message: 'We need your permission to use your audio',
+          buttonPositive: 'Ok',
+          buttonNegative: 'Cancel',
+        }}
+        onGoogleVisionBarcodesDetected={({ barcodes }) => {
+          console.log(barcodes);
+        }}
+      />
+
     } else if (params === 2) {
-      alert("Getting Location")
+      GetLocation.getCurrentPosition({
+        enableHighAccuracy: true,
+        timeout: 15000,
+      })
+        .then(location => {
+          ToastAndroid.show("Latitude is " + location.latitude.toString() + " & Longitude is " + location.longitude, ToastAndroid.SHORT);
+        })
+        .catch(error => {
+          const { code, message } = error;
+          console.warn(code, message);
+        })
     } else if (params === 5) {
       alert("JSON Listing")
     } else if (params === 6) {
@@ -26,6 +63,14 @@ export default class LaunchScreen extends Component {
       alert("Facebook Login")
     }
   }
+
+  takePicture = async () => {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await this.camera.takePictureAsync(options);
+      console.log(data.uri);
+    }
+  };
 
   retriveToken = async () => {
     try {

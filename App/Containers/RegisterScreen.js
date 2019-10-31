@@ -26,7 +26,7 @@ export default class RegisterScreen extends Component {
                     <Header style={{ backgroundColor: 'white' }}>
                         <Left><Icon source="Feather" name="camera" /></Left>
                         <Body style={{ justifyContent: 'center', textAlign: 'center' }}>
-                            <Text style={{ textAlign: 'center', justifyContent: 'center' }}>Insatgram</Text>
+                            <Text style={{ textAlign: 'center', justifyContent: 'center',fontFamily:'AntDesign' }}>Insatgram</Text>
                         </Body>
                         <Right>
                             <Icon style={{ paddingRight: 20 }} source="Feather" name="tv" />
